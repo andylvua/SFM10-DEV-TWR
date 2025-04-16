@@ -1,0 +1,101 @@
+{
+  "version": "2.0.0",
+  
+  "tasks": [
+    {
+      "label": "build task sequence",
+      "type": "shell",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "remove build directory",
+        "build and upload",
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+    },
+    {
+      "label": "remove build directory",
+      "type": "shell",
+      "linux": {
+          "command": "rm -rf ./build"
+      },
+      "windows": {
+          "command": "cmd",
+          "args": ["/C", "if exist .\\build rmdir /Q /S .\\build"]
+      }
+    },
+    {
+      "label": "build and upload",
+      "type": "shell",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "create build directory",
+        "cmake",
+        "compile",
+        "upload",
+      ],
+    },
+    {
+      "label": "create build directory",
+      "type": "shell",
+      "linux": {
+          "command": "mkdir -p ./build"
+      },
+      "windows": {
+          "command": "cmd",
+          "args": ["/C", "if not exist .\\build mkdir .\\build"]
+      }
+    },
+    {
+      "label": "cmake",
+      "type": "shell",
+      "command": "cmake",
+      "options": {
+          "cwd": "build"
+      },
+      "args": [
+          "-G",
+          "'Ninja'",
+          "./..",
+          "-DCMAKE_BUILD_TYPE=Debug",
+      ],
+      "problemMatcher": [
+        "$gcc"
+      ],
+    },
+    {
+        "label": "compile",
+        "type": "shell",
+
+        "linux": {
+            "command": "ninja"
+        },
+        "windows": {
+            "command": "ninja",
+        },
+        "options": {
+            "cwd": "build",
+        },
+        "args": [
+        ],
+        "problemMatcher": [
+          "$gcc"
+        ],
+    },
+    {
+      "label": "upload",
+      "type": "shell",
+      "command": "python",
+      "options": {
+          "cwd": "build"
+      },
+      "args": [
+          "../${config:sourceFiles}/upload.py",
+          "../build/app.hex",
+          "${config:serialPort}",
+      ],
+    },
+  ]
+}

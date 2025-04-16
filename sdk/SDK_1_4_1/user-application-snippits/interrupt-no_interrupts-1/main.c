@@ -1,0 +1,38 @@
+
+/* (c) SynchronicIT B.V. 2021. All rights reserved.                                   05/07/2024
+             _____                  _               ______         _             
+            / ____|                | |             |  ____|       (_)             TM
+           | (___  _   _ _ __   ___| |__  _ __ ___ | |__ _   _ ___ _  ___  _ __  
+            \___ \| | | | '_ \ / __| '_ \| '__/ _ \|  __| | | / __| |/ _ \| '_ \ 
+            ____) | |_| | | | | (__| | | | | | (_) | |  | |_| \__ \ | (_) | | | |
+           |_____/ \__, |_| |_|\___|_| |_|_|  \___/|_|   \__,_|___/_|\___/|_| |_|
+                    __/ |                                                        
+                   |___/                                 http://www.synchronicit.nl/ 
+
+  This software is confidential and proprietary of SynchronicIT and is subject to the terms and 
+  conditions defined in file 'LICENSE.txt', which is part of this source code package. You shall 
+  not disclose such Confidential Information and shall use it only in accordance with the terms 
+  of the license agreement.
+
+                                                                  USER APPLICATION version 1.4.1
+*/
+
+#include "user-application.h"
+
+void foo() {
+    Serial.print("button pressed at %u ms!\n", millis());
+}
+
+void setup() {
+    Serial.begin(115200);
+    pinMode(PIN_USER_BUTTON, INPUT_PULLUP);
+    attachInterrupt(PIN_USER_BUTTON, foo, FALLING);
+    delay(4000);
+    uint32_t counter = noInterrupts(); // disable interrupts around t=4000 
+    
+    /* enter critical region. */
+
+    delay(4000);
+    counter = interrupts(counter); // re-enable interrupts around t=8000
+}
+

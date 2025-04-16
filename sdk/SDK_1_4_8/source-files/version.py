@@ -1,0 +1,7 @@
+
+MAJOR = 1
+MINOR = 4
+PATCH = 8
+DATE = ((24-20) * 0x10 + 9)
+
+BOOTLOADER = 220825

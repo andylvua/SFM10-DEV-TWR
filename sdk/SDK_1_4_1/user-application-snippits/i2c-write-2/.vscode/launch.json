@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "upload sketch and open UART terminal",
+      "type": "python",
+      "request": "launch",
+      "program": "${config:sourceFiles}/monitor.py",
+      "args": ["${config:serialPort}", "${config:serialBaudrate}"],
+      "cwd": "",
+      "preLaunchTask": "build and upload"
+    }
+  ]
+}

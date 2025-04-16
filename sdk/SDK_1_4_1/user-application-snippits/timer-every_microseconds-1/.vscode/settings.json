@@ -1,0 +1,17 @@
+{
+    // Set here the COM port id that your PC has assigned to your device:
+    "serialPort": "",
+
+    // Set here the baud rate that you used in Serial.begin:
+    "serialBaudrate": "115200",
+
+    // Set here the path to the SDK source-files folder:
+    "sourceFiles": "../../source-files",
+
+    "files.associations": {
+        "user-application.h": "c",
+        "stdint.h": "c",
+        "phy-api.h": "c"
+    },
+    "cmake.configureOnOpen": false,
+}

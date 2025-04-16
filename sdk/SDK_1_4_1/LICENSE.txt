@@ -1,0 +1,2 @@
+This software is confidential and proprietary of SynchronicIT
+For the terms and conditions, see: documentation\Terms-and-Conditions.html

@@ -1,0 +1,21 @@
+{
+    // Set here the COM port id that your PC has assigned to your device:
+    "serialPort": "",
+
+    // Set here the baud rate that you used in Serial.begin:
+    "serialBaudrate": "115200",
+
+    // Set here the path to the SDK source-files folder:
+    "sourceFiles": "../../source-files",
+
+    "files.associations": {
+        "bq51222.h": "c",
+        "bq25120.h": "c",
+        "pinout.h": "c",
+        "user-application.h": "c",
+        "phy-api.h": "c",
+        "stdint.h": "c",
+        "uwb-payloads.h": "c"
+    },
+    "cmake.configureOnOpen": false,
+}

@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "name": "SFM10-DEV",
+            "includePath": [
+                "${config:sourceFiles}",
+                "${default}"
+            ],
+            "compilerPath": "arm-none-eabi-gcc",
+            "intelliSenseMode": "macos-gcc-arm"
+        }
+    ],
+    "version": 4
+}

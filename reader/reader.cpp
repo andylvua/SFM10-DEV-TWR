@@ -101,11 +101,8 @@ public:
         layout->addWidget(losRatioLabel);
 
         transactionsCountLabel = new QLabel("Transactions: 0", this);
-        QFont labelFont = transactionsCountLabel->font();
-        labelFont.setBold(true);
-        labelFont.setPointSize(24);
-        losRatioLabel->setFont(labelFont);
-        layout->addWidget(losRatioLabel);
+        transactionsCountLabel->setFont(labelFont);
+        layout->addWidget(transactionsCountLabel);
 
         setLayout(layout);
 
@@ -184,6 +181,7 @@ private:
 
     QMap<uint16_t, AnchorData> anchors;
     QLabel *losRatioLabel;
+    QLabel *transactionsCountLabel;
     QPushButton *freezeButton;
     QTimer *distanceTimer;
     QTimer *offlineCheckTimer;
